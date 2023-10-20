@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>❤️</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos CSS para a caixa de diálogo */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 80%;
+    }
+
+    /* Estilos CSS para o botão da caixa de diálogo */
+    .modal-button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 6px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    /* Estilos CSS para o texto dentro da caixa de diálogo */
+    .modal-text {
+      font-size: 14px;
+    }
+
+    /* Estilos CSS para o texto do e-mail e senha */
+    .modal-credentials {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <span style='font-size:80px;'>&#128584;</span>
+  <p id="question">Quem é mais boteco??</p>
+  
+  <div class="button-container">
+    <button class="button" id="simButton">Vitoria</button>
+    <button class="button" id="naoButton">Vini</button>
+  </div>
+
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="modal-text">
+        Parabéns, você acaba de ganhar um acesso em HBOX Max<br>
+        <span class="modal-credentials">E-mail:</span><br>
+        arquivosdrivevinicius@gmail.com<br>
+        <span class="modal-credentials">Senha:</span><br>
+        vinidelas
+      </span>
+      <br>
+      <button class="modal-button" id="modalButton">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    var naoButton = document.getElementById("naoButton");
+    var simButton = document.getElementById("simButton");
+    var questionText = document.getElementById("question");
+    var modal = document.getElementById("myModal");
+    var modalButton = document.getElementById("modalButton");
+
+    var questions = [
+      "Quem é pior no X1?",
+      "Quem é pior no X1?",
+      "Quem sempre entrega na partida?"
+      // Adicione quantas perguntas desejar
+    ];
+
+    var questionIndex = 0; // Índice da pergunta atual
+
+    modal.style.display = "none"; // Garante que o modal esteja oculto no início
+
+    naoButton.addEventListener("mouseover", moveButton);
+    naoButton.addEventListener("click", moveButton);
+
+    simButton.addEventListener("click", showNextQuestion);
+
+    modalButton.addEventListener("click", closeDialog);
+
+    function moveButton() {
+      var screenWidth = window.innerWidth;
+      var screenHeight = window.innerHeight;
+
+      var randomX = Math.floor(Math.random() * (screenWidth - naoButton.offsetWidth));
+      var randomY = Math.floor(Math.random() * (screenHeight - naoButton.offsetHeight));
+
+      naoButton.style.position = "fixed";
+      naoButton.style.left = randomX + "px";
+      naoButton.style.top = randomY + "px";
+    }
+
+    function resetButtonPosition() {
+      naoButton.style.position = "";
+      naoButton.style.left = "";
+      naoButton.style.top = "";
+    }
+
+    function showNextQuestion() {
+      if (questionIndex < questions.length - 1) {
+        questionIndex++;
+        questionText.textContent = questions[questionIndex];
+        resetButtonPosition();
+      } else {
+        questionText.textContent = "";
+        simButton.removeEventListener("click", showNextQuestion);
+        modal.style.display = "block"; // Exibe a caixa de diálogo quando todas as perguntas forem respondidas
+      }
+    }
+
+    function closeDialog() {
+      modal.style.display = "none"; // Fecha a caixa de diálogo
+      hideButtons(); // Chama a função para ocultar os botões
+    }
+
+    function hideButtons() {
+      var buttonContainer = document.querySelector(".button-container");
+      buttonContainer.style.display = "none"; // Oculta o contêiner dos botões
+    }
+  </script>
+</body>
+</html>
