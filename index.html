@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>&#127941</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Estilos CSS para layout responsivo */
+    body {
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    .login-container {
+      max-width: 300px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+
+    .login-button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Minha Cria</h1>
+  
+  <div class="login-container">
+    <input type="text" id="usernameInput" class="login-input" placeholder="Usuário">
+    <input type="password" id="passwordInput" class="login-input" placeholder="Senha">
+    <button class="login-button" onclick="login()">Entrar</button>
+  </div>
+
+  <script>
+    function login() {
+      var username = document.getElementById("usernameInput").value;
+      var password = document.getElementById("passwordInput").value;
+
+      if (username === "vitoria" && password === "viczinha") {
+        window.location.href = "mensagem.html"; // Redireciona para mensagem.html
+      } else {
+        alert("Usuário ou senha inválidos.");
+      }
+    }
+  </script>
+</body>
+</html>
